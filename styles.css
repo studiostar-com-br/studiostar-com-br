@@ -20,7 +20,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px;
+    scroll-padding-top: 70px; /* Reduzido para acompanhar o header menor */
 }
 
 body {
@@ -49,7 +49,7 @@ img {
 /* Buttons */
 .btn {
     display: inline-block;
-    padding: 0.8rem 2rem;
+    padding: 0.8rem 1.8rem;
     border-radius: 50px;
     font-weight: 600;
     text-align: center;
@@ -74,7 +74,7 @@ img {
     background-color: transparent;
     color: var(--white);
     border: 2px solid var(--white);
-    margin-left: 1rem;
+    margin-left: 0.5rem;
 }
 
 .btn-outline:hover {
@@ -86,8 +86,8 @@ img {
 .btn-service {
     background-color: var(--pink);
     color: var(--white);
-    padding: 0.6rem 1.5rem;
-    font-size: 0.9rem;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.85rem;
 }
 
 .btn-service:hover {
@@ -96,11 +96,11 @@ img {
     box-shadow: 0 5px 15px rgba(255, 93, 143, 0.3);
 }
 
-/* Header */
+/* Header & Navegação */
 header {
     background-color: rgba(32, 32, 32, 0.95);
     color: var(--white);
-    padding: 1rem;
+    padding: 0.7rem 1rem;
     position: fixed;
     width: 100%;
     top: 0;
@@ -110,7 +110,7 @@ header {
 }
 
 header.scrolled {
-    padding: 0.8rem 1rem;
+    padding: 0.5rem 1rem;
     background-color: rgba(32, 32, 32, 0.98);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
@@ -121,20 +121,21 @@ header.scrolled {
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 0.5rem;
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 700;
     color: var(--white);
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
 }
 
 .logo span {
     color: var(--pink);
 }
 
+/* Navbar Desktop */
 .nav-menu {
     display: none;
 }
@@ -142,15 +143,16 @@ header.scrolled {
 .nav-menu a {
     color: var(--white);
     font-weight: 500;
-    padding: 0.5rem 1rem;
+    padding: 0.3rem 0.7rem;
     transition: var(--transition);
     position: relative;
+    font-size: 0.9rem;
 }
 
 .nav-menu a::after {
     content: '';
     position: absolute;
-    bottom: -5px;
+    bottom: -3px;
     left: 50%;
     width: 0;
     height: 2px;
@@ -172,9 +174,10 @@ header.scrolled {
     background: none;
     border: none;
     color: var(--white);
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     cursor: pointer;
     transition: var(--transition);
+    padding: 0.2rem;
 }
 
 .menu-toggle:hover {
@@ -186,12 +189,12 @@ header.scrolled {
     position: fixed;
     top: 0;
     right: -100%;
-    width: 70%;
+    width: 65%;
     height: 100vh;
     background-color: var(--black);
     z-index: 1001;
     transition: right 0.3s ease;
-    padding: 2rem;
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
@@ -206,10 +209,11 @@ header.scrolled {
     background: none;
     border: none;
     color: var(--white);
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
     cursor: pointer;
     transition: var(--transition);
+    padding: 0.2rem;
 }
 
 .mobile-menu .close-menu:hover {
@@ -218,17 +222,17 @@ header.scrolled {
 
 .mobile-menu a {
     color: var(--white);
-    font-size: 1.2rem;
-    margin: 1rem 0;
+    font-size: 1.1rem;
+    margin: 0.6rem 0;
     transition: var(--transition);
-    padding: 0.5rem;
-    border-left: 3px solid transparent;
+    padding: 0.4rem 0.5rem;
+    border-left: 2px solid transparent;
 }
 
 .mobile-menu a:hover {
     color: var(--pink);
-    border-left: 3px solid var(--pink);
-    padding-left: 1rem;
+    border-left: 2px solid var(--pink);
+    padding-left: 0.8rem;
 }
 
 .overlay {
@@ -249,7 +253,7 @@ header.scrolled {
     visibility: visible;
 }
 
-/* Hero Section - Melhorado para mobile */
+/* Hero Section */
 .hero {
     background: linear-gradient(to right, rgba(32, 32, 32, 0.9), rgba(32, 32, 32, 0.7)), url('/api/placeholder/1200/600') center/cover no-repeat;
     min-height: 100vh;
@@ -262,7 +266,6 @@ header.scrolled {
     position: relative;
 }
 
-/* Correção para divisores angulares - usando clip-path para garantir bordas perfeitas */
 .hero::before {
     content: '';
     position: absolute;
@@ -282,7 +285,6 @@ header.scrolled {
     padding: 0 1rem;
 }
 
-/* Títulos e textos otimizados para mobile */
 .hero h1 {
     font-size: 2.2rem;
     margin-bottom: 1.2rem;
@@ -311,13 +313,13 @@ header.scrolled {
 
 /* Sections */
 .section {
-    padding: 5rem 1rem;
+    padding: 4rem 1rem; /* Reduzido de 5rem para 4rem */
     position: relative;
 }
 
 .section-title {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem; /* Reduzido de 3rem */
 }
 
 .subtitle {
@@ -331,7 +333,7 @@ header.scrolled {
 }
 
 .section-title h2 {
-    font-size: 2.2rem;
+    font-size: 2rem; /* Reduzido de 2.2rem */
     color: var(--black);
     position: relative;
     display: inline-block;
@@ -352,7 +354,7 @@ header.scrolled {
 .services-container {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem; /* Reduzido de 2rem */
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -367,12 +369,12 @@ header.scrolled {
 }
 
 .service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px); /* Reduzido de -10px */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12); /* Reduzido */
 }
 
 .service-img {
-    height: 220px;
+    height: 200px; /* Reduzido de 220px */
     overflow: hidden;
     position: relative;
 }
@@ -385,46 +387,46 @@ header.scrolled {
 }
 
 .service-card:hover .service-img img {
-    transform: scale(1.1);
+    transform: scale(1.08); /* Reduzido de 1.1 */
 }
 
 .service-tag {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 12px; /* Reduzido de 15px */
+    right: 12px; /* Reduzido de 15px */
     background-color: var(--pink);
     color: var(--white);
-    padding: 0.4rem 1rem;
+    padding: 0.3rem 0.8rem; /* Reduzido */
     border-radius: 20px;
-    font-size: 0.8rem;
+    font-size: 0.75rem; /* Reduzido de 0.8rem */
     font-weight: 600;
-    box-shadow: 0 3px 10px rgba(255, 93, 143, 0.3);
+    box-shadow: 0 3px 8px rgba(255, 93, 143, 0.25); /* Reduzido */
 }
 
 .service-content {
-    padding: 1.8rem;
+    padding: 1.5rem; /* Reduzido de 1.8rem */
 }
 
 .service-content h3 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
+    font-size: 1.25rem; /* Reduzido de 1.3rem */
+    margin-bottom: 0.8rem; /* Reduzido de 1rem */
     color: var(--black);
 }
 
 .service-content p {
     color: var(--dark-gray);
-    margin-bottom: 1.5rem;
-    font-size: 0.95rem;
+    margin-bottom: 1.2rem; /* Reduzido de 1.5rem */
+    font-size: 0.9rem; /* Reduzido de 0.95rem */
     line-height: 1.6;
 }
 
-/* Team Section - Correção dos divisores angulares */
+/* Team Section */
 .team {
     background-color: var(--lighter-pink);
     position: relative;
     overflow: hidden;
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: 4rem; /* Reduzido de 5rem */
+    padding-bottom: 4rem; /* Reduzido de 5rem */
 }
 
 .team::before {
@@ -452,7 +454,7 @@ header.scrolled {
 .team-container {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem; /* Reduzido de 2rem */
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
@@ -469,12 +471,12 @@ header.scrolled {
 }
 
 .team-member:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px); /* Reduzido de -10px */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12); /* Reduzido */
 }
 
 .member-img {
-    height: 270px;
+    height: 250px; /* Reduzido de 270px */
     overflow: hidden;
     position: relative;
 }
@@ -503,38 +505,38 @@ header.scrolled {
 }
 
 .team-member:hover .member-img img {
-    transform: scale(1.05);
+    transform: scale(1.04); /* Reduzido de 1.05 */
 }
 
 .member-info {
-    padding: 1.5rem;
+    padding: 1.25rem; /* Reduzido de 1.5rem */
 }
 
 .member-info h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.1rem; /* Reduzido de 1.2rem */
+    margin-bottom: 0.4rem; /* Reduzido de 0.5rem */
     color: var(--black);
 }
 
 .member-info p {
     color: var(--pink);
     font-weight: 600;
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
+    margin-bottom: 0.8rem; /* Reduzido de 1rem */
+    font-size: 0.85rem; /* Reduzido de 0.9rem */
 }
 
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: 0.8rem; /* Reduzido de 1rem */
 }
 
 .social-links a {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 35px;
-    height: 35px;
+    width: 32px; /* Reduzido de 35px */
+    height: 32px; /* Reduzido de 35px */
     background-color: var(--gray);
     color: var(--black);
     border-radius: 50%;
@@ -551,7 +553,7 @@ header.scrolled {
 .testimonials-container {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem; /* Reduzido de 2rem */
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -559,7 +561,7 @@ header.scrolled {
 .testimonial-card {
     background-color: var(--white);
     border-radius: 15px;
-    padding: 2rem;
+    padding: 1.75rem; /* Reduzido de 2rem */
     box-shadow: var(--shadow);
     transition: var(--transition);
     position: relative;
@@ -567,15 +569,15 @@ header.scrolled {
 
 .testimonial-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12); /* Reduzido */
 }
 
 .testimonial-card::before {
     content: '\201C';
     position: absolute;
-    top: 20px;
-    left: 20px;
-    font-size: 5rem;
+    top: 15px; /* Reduzido de 20px */
+    left: 15px; /* Reduzido de 20px */
+    font-size: 4.5rem; /* Reduzido de 5rem */
     color: var(--light-pink);
     font-family: serif;
     line-height: 1;
@@ -583,50 +585,51 @@ header.scrolled {
 }
 
 .testimonial-rating {
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem; /* Reduzido de 1rem */
     color: #FFD700;
 }
 
 .testimonial-text {
     font-style: italic;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem; /* Reduzido de 1.5rem */
     color: var(--dark-gray);
-    line-height: 1.8;
+    line-height: 1.7; /* Reduzido de 1.8 */
     position: relative;
     z-index: 1;
+    font-size: 0.95rem; /* Adicionado para consistência */
 }
 
 .testimonial-author {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.8rem; /* Reduzido de 1rem */
 }
 
 .testimonial-img {
-    width: 60px;
-    height: 60px;
+    width: 55px; /* Reduzido de 60px */
+    height: 55px; /* Reduzido de 60px */
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid var(--pink);
 }
 
 .testimonial-author h4 {
-    font-size: 1rem;
+    font-size: 0.95rem; /* Reduzido de 1rem */
     margin-bottom: 0.2rem;
 }
 
 .testimonial-author p {
-    font-size: 0.85rem;
+    font-size: 0.8rem; /* Reduzido de 0.85rem */
     color: var(--dark-gray);
 }
 
-/* Benefits - Correção dos divisores angulares */
+/* Benefits */
 .benefits {
     background-color: var(--gray);
     position: relative;
     overflow: hidden;
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: 4rem; /* Reduzido de 5rem */
+    padding-bottom: 4rem; /* Reduzido de 5rem */
 }
 
 .benefits::before {
@@ -643,7 +646,7 @@ header.scrolled {
 .benefits-container {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem; /* Reduzido de 2rem */
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
@@ -655,7 +658,7 @@ header.scrolled {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 2rem;
+    padding: 1.75rem; /* Reduzido de 2rem */
     background-color: var(--white);
     border-radius: 15px;
     box-shadow: var(--shadow);
@@ -664,21 +667,21 @@ header.scrolled {
 }
 
 .benefit-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px); /* Reduzido de -10px */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12); /* Reduzido */
 }
 
 .benefit-icon {
-    width: 80px;
-    height: 80px;
+    width: 70px; /* Reduzido de 80px */
+    height: 70px; /* Reduzido de 80px */
     background-color: var(--lighter-pink);
     color: var(--pink);
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    margin-bottom: 1.5rem;
-    font-size: 2rem;
+    margin-bottom: 1.25rem; /* Reduzido de 1.5rem */
+    font-size: 1.8rem; /* Reduzido de 2rem */
     transition: var(--transition);
 }
 
@@ -689,28 +692,27 @@ header.scrolled {
 }
 
 .benefit-item h3 {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
+    font-size: 1.1rem; /* Reduzido de 1.2rem */
+    margin-bottom: 0.8rem; /* Reduzido de 1rem */
     color: var(--black);
 }
 
 .benefit-item p {
     color: var(--dark-gray);
-    font-size: 0.95rem;
+    font-size: 0.9rem; /* Reduzido de 0.95rem */
     line-height: 1.6;
 }
 
-/* Slogan Section (Corrigido) */
+/* Slogan Section */
 .slogan-section {
     background-color: var(--pink);
     color: var(--white);
     text-align: center;
-    padding: 5rem 1rem;
+    padding: 4rem 1rem; /* Reduzido de 5rem */
     position: relative;
     overflow: hidden;
 }
 
-/* Divisor superior angular */
 .slogan-section::before {
     content: '';
     position: absolute;
@@ -722,7 +724,6 @@ header.scrolled {
     clip-path: polygon(0 0, 100% 0, 0 100%);
 }
 
-/* Divisor inferior angular */
 .slogan-section::after {
     content: '';
     position: absolute;
@@ -749,16 +750,16 @@ header.scrolled {
 }
 
 .slogan-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
+    font-size: 2.3rem; /* Reduzido de 2.5rem */
+    margin-bottom: 1.25rem; /* Reduzido de 1.5rem */
     color: var(--white);
     animation: pulse 2s infinite;
 }
 
 .slogan-text {
-    font-size: 2rem;
+    font-size: 1.8rem; /* Reduzido de 2rem */
     font-weight: 700;
-    margin-bottom: 2rem;
+    margin-bottom: 1.75rem; /* Reduzido de 2rem */
     line-height: 1.3;
 }
 
@@ -775,11 +776,11 @@ header.scrolled {
     transform: translateY(-3px);
 }
 
-/* Footer - Versão Final Otimizada */
+/* Footer Otimizado */
 footer {
     background-color: var(--black);
     color: var(--white);
-    padding: 3rem 1rem 1.5rem;
+    padding: 2.5rem 1rem 1rem; /* Reduzido de 3rem 1rem 1.5rem */
     position: relative;
     overflow: hidden;
 }
@@ -789,7 +790,7 @@ footer {
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem; /* Reduzido de 2rem */
     position: relative;
     z-index: 2;
 }
@@ -801,10 +802,10 @@ footer {
 
 .footer-col h3 {
     color: var(--white);
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
+    font-size: 1.1rem; /* Reduzido de 1.2rem */
+    margin-bottom: 0.8rem; /* Reduzido de 1rem */
     position: relative;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.4rem; /* Reduzido de 0.5rem */
     display: inline-block;
 }
 
@@ -817,30 +818,30 @@ footer {
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 40px;
+    width: 35px; /* Reduzido de 40px */
     height: 2px;
     background-color: var(--pink);
 }
 
 .footer-col p {
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem; /* Reduzido de 1rem */
     color: #ccc;
     line-height: 1.5;
-    font-size: 0.9rem;
+    font-size: 0.85rem; /* Reduzido de 0.9rem */
 }
 
 .footer-social {
     display: flex;
-    gap: 0.8rem;
-    margin-top: 1rem;
+    gap: 0.7rem; /* Reduzido de 0.8rem */
+    margin-top: 0.8rem; /* Reduzido de 1rem */
 }
 
 .footer-social a {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+    width: 32px; /* Reduzido de 36px */
+    height: 32px; /* Reduzido de 36px */
     background-color: rgba(255, 255, 255, 0.1);
     color: var(--white);
     border-radius: 50%;
@@ -857,7 +858,7 @@ footer {
 .footer-info {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 0.5rem; /* Reduzido de 0.6rem */
     margin: 0;
     padding: 0;
 }
@@ -867,7 +868,7 @@ footer {
     align-items: center;
     gap: 8px;
     color: #ccc;
-    font-size: 0.9rem;
+    font-size: 0.85rem; /* Reduzido de 0.9rem */
     margin: 0;
     padding: 0;
 }
@@ -878,11 +879,11 @@ footer {
     min-width: 16px;
 }
 
-/* Reformulação dos horários - Nova estrutura */
+/* Horários */
 .footer-hours-container {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.4rem; /* Reduzido de 0.5rem */
     margin: 0;
     padding: 0;
 }
@@ -890,7 +891,7 @@ footer {
 .footer-hour-row {
     display: flex;
     justify-content: space-between;
-    font-size: 0.9rem;
+    font-size: 0.85rem; /* Reduzido de 0.9rem */
     color: #ccc;
     padding: 0.15rem 0;
     border-bottom: 1px dotted rgba(255, 255, 255, 0.1);
@@ -905,15 +906,11 @@ footer {
     color: var(--white);
 }
 
-.footer-hour-row .time {
-    color: #ccc;
-}
-
-/* Links rápidos otimizados */
+/* Links rápidos */
 .footer-links {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem; /* Espaçamento reduzido entre os links */
+    gap: 0.4rem;
     margin: 0;
     padding: 0;
 }
@@ -928,15 +925,15 @@ footer {
 .footer-links li a {
     color: #ccc;
     transition: var(--transition);
-    font-size: 0.9rem;
-    padding: 0.15rem 0; /* Padding vertical reduzido */
+    font-size: 0.85rem; /* Reduzido de 0.9rem */
+    padding: 0.15rem 0;
     position: relative;
     display: flex;
     align-items: center;
 }
 
 .footer-links li a::before {
-    content: '\f105'; /* Ícone de seta para a direita do Font Awesome */
+    content: '\f105';
     font-family: 'Font Awesome 6 Free';
     font-weight: 900;
     margin-right: 0.5rem;
@@ -955,74 +952,50 @@ footer {
 }
 
 .footer-bottom {
-    margin-top: 2rem;
+    margin-top: 1.5rem; /* Reduzido de 2rem */
     text-align: center;
-    padding-top: 1.5rem;
+    padding-top: 1.2rem; /* Reduzido de 1.5rem */
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-bottom p {
     color: #999;
-    font-size: 0.85rem;
+    font-size: 0.8rem; /* Reduzido de 0.85rem */
 }
 
-/* Media Queries para o footer */
-@media (min-width: 768px) {
-    .footer-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-    }
-    
-    .footer-col {
-        padding: 0 0.5rem;
-    }
-}
-
-@media (min-width: 992px) {
-    .footer-container {
-        grid-template-columns: 1.5fr 1fr 1fr 1fr;
-        gap: 1rem;
-    }
-    
-    .footer-col:first-child {
-        padding-right: 1rem;
-    }
-}
-
-/* Whatsapp Button */
+/* Botões Flutuantes */
 .whatsapp-btn {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
+    bottom: 25px; /* Reduzido de 30px */
+    right: 25px; /* Reduzido de 30px */
     z-index: 999;
     background-color: #25d366;
     color: white;
-    width: 50px; /* Reduzi de 60px para 50px */
-    height: 50px; /* Reduzi de 60px para 50px */
+    width: 45px; /* Reduzido de 50px */
+    height: 45px; /* Reduzido de 50px */
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    font-size: 1.5rem; /* Reduzi um pouco o tamanho do ícone também */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Reduzido */
+    font-size: 1.4rem; /* Reduzido de 1.5rem */
     transition: var(--transition);
 }
 
 .whatsapp-btn:hover {
     background-color: #128C7E;
-    transform: scale(1.1);
+    transform: scale(1.08); /* Reduzido de 1.1 */
 }
 
-/* Back to Top Button */
 .back-to-top {
     position: fixed;
-    bottom: 95px; /* Posicionando acima do botão do WhatsApp (30px do bottom + 50px de altura + 15px de espaço) */
-    right: 30px; /* Mudei de left para right */
+    bottom: 80px; /* Reduzido e reposicionado */
+    right: 25px; /* Reduzido de 30px */
     z-index: 999;
     background-color: var(--pink);
     color: var(--white);
-    width: 50px; /* Já estava com 50px, mantendo igual ao do WhatsApp */
-    height: 50px; /* Já estava com 50px, mantendo igual ao do WhatsApp */
+    width: 45px; /* Já estava com 50px, mantendo igual ao do WhatsApp */
+    height: 45px; /* Já estava com 50px, mantendo igual ao do WhatsApp */
     border-radius: 50%;
     display: flex;
     align-items: center;
