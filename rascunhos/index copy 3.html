@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Star - Seu Espaço de Beleza</title>
+    <style>
+        /* Reset e estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        :root {
+            --black: #202020;
+            --pink: #ff5d8f;
+            --light-pink: #ffb6c1;
+            --gray: #f0f0f0;
+            --dark-gray: #555555;
+            --white: #ffffff;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--black);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--pink);
+        }
+
+        .nav-menu {
+            display: none;
+        }
+
+        .menu-toggle {
+            display: block;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            height: 100vh;
+            background-color: var(--black);
+            z-index: 1001;
+            transition: right 0.3s ease;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-menu.open {
+            right: 0;
+        }
+
+        .mobile-menu .close-menu {
+            align-self: flex-end;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            cursor: pointer;
+        }
+
+        .mobile-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--pink);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to right, rgba(32, 32, 32, 0.9), rgba(32, 32, 32, 0.7)), url('/api/placeholder/1200/600') center/cover no-repeat;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 2rem 1rem;
+            margin-top: 3.5rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 span {
+            color: var(--pink);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--pink);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--light-pink);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 93, 143, 0.3);
+        }
+
+        /* Serviços */
+        .section {
+            padding: 4rem 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--black);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            left: 25%;
+            bottom: 0;
+            width: 50%;
+            height: 3px;
+            background-color: var(--pink);
+        }
+
+        .services-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+
+        .service-content {
+            padding: 1.5rem;
+        }
+
+        .service-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--black);
+        }
+
+        .service-content p {
+            color: var(--dark-gray);
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .service-content .btn {
+            font-size: 0.9rem;
+            padding: 0.6rem 1.5rem;
+        }
+
+        /* Profissionais */
+        .team {
+            background-color: var(--gray);
+        }
+
+        .team-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-member {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+
+        .member-img {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .member-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .member-info {
+            padding: 1.5rem;
+        }
+
+        .member-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--black);
+        }
+
+        .member-info p {
+            color: var(--pink);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            background-color: var(--gray);
+            color: var(--dark-gray);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--pink);
+            color: var(--white);
+        }
+
+        /* Vantagens */
+        .benefits-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .benefit-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--pink);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .benefit-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+
+        .benefit-item p {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 3rem 1rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .footer-col h3 {
+            color: var(--pink);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--pink);
+        }
+
+        .footer-col p,
+        .footer-col address {
+            margin-bottom: 1rem;
+            font-style: normal;
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        .footer-col a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-col a:hover {
+            color: var(--pink);
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Whatsapp Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            font-size: 1.8rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+
+        /* Media Queries */
+        @media (min-width: 768px) {
+            .services-container,
+            .team-container,
+            .benefits-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .menu-toggle {
+                display: none;
+            }
+
+            .nav-menu {
+                display: flex;
+                gap: 2rem;
+            }
+
+            .nav-menu a {
+                color: var(--white);
+                text-decoration: none;
+                font-weight: 500;
+                transition: color 0.3s ease;
+            }
+
+            .nav-menu a:hover {
+                color: var(--pink);
+            }
+
+            .services-container,
+            .benefits-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .team-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">Studio Star</a>
+            <nav class="nav-menu">
+                <a href="#home">Home</a>
+                <a href="#services">Serviços</a>
+                <a href="#team">Profissionais</a>
+                <a href="#benefits">Vantagens</a>
+                <a href="#contact">Contato</a>
+            </nav>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu">
+        <button class="close-menu" id="closeMenu">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="#home">Home</a>
+        <a href="#services">Serviços</a>
+        <a href="#team">Profissionais</a>
+        <a href="#benefits">Vantagens</a>
+        <a href="#contact">Contato</a>
+    </div>
+    <div id="overlay" class="overlay"></div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Bem-vinda ao <span>Studio Star</span></h1>
+            <p>Seu espaço completo de beleza e bem-estar. Aqui você encontra os melhores tratamentos estéticos com profissionais qualificadas.</p>
+            <a href="#services" class="btn">Conheça Nossos Serviços</a>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="services" class="section">
+        <div class="section-title">
+            <h2>Nossos Serviços</h2>
+        </div>
+        <div class="services-container">
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="/api/placeholder/400/300" alt="Estética Facial">
+                </div>
+                <div class="service-content">
+                    <h3>Estética Facial</h3>
+                    <p>Tratamentos faciais personalizados para realçar sua beleza natural e rejuvenescer sua pele. Limpeza, hidratação, peeling e muito mais.</p>
+                    <a href="https://wa.me/5500000000000?text=Olá! Gostaria de agendar um serviço de Estética Facial" class="btn">Agendar Agora</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="/api/placeholder/400/300" alt="Estética Corporal">
+                </div>
+                <div class="service-content">
+                    <h3>Estética Corporal</h3>
+                    <p>Tratamentos corporais que melhoram a aparência da pele, reduzem medidas e proporcionam bem-estar. Massagens modeladoras e drenagem linfática.</p>
+                    <a href="https://wa.me/5500000000000?text=Olá! Gostaria de agendar um serviço de Estética Corporal" class="btn">Agendar Agora</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="/api/placeholder/400/300" alt="Manicure e Pedicure">
+                </div>
+                <div class="service-content">
+                    <h3>Manicure e Pedicure</h3>
+                    <p>Cuidados completos para suas mãos e pés. Esmaltes de alta qualidade, esmaltação em gel, unhas de fibra e decorações exclusivas.</p>
+                    <a href="https://wa.me/5500000000000?text=Olá! Gostaria de agendar um serviço de Manicure e Pedicure" class="btn">Agendar Agora</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="/api/placeholder/400/300" alt="Extensão de Cílios">
+                </div>
+                <div class="service-content">
+                    <h3>Extensão de Cílios</h3>
+                    <p>Realce seu olhar com nossa extensão de cílios. Técnicas fio a fio, volume russo e híbrida para um resultado natural e duradouro.</p>
+                    <a href="https://wa.me/5500000000000?text=Olá! Gostaria de agendar um serviço de Extensão de Cílios" class="btn">Agendar Agora</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="/api/placeholder/400/300" alt="Design de Sobrancelhas">
+                </div>
+                <div class="service-content">
+                    <h3>Design de Sobrancelhas</h3>
+                    <p>Design personalizado que valoriza sua expressão facial. Micropigmentação, henna e laminação para sobrancelhas perfeitas.</p>
+                    <a href="https://wa.me/5500000000000?text=Olá! Gostaria de agendar um serviço de Design de Sobrancelhas" class="btn">Agendar Agora</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="/api/placeholder/400/300" alt="Tratamentos Capilares">
+                </div>
+                <div class="service-content">
+                    <h3>Tratamentos Capilares</h3>
+                    <p>Hidratação, nutrição e reconstrução capilar. Deixe seus cabelos mais saudáveis, brilhantes e bonitos com nossos tratamentos especializados.</p>
+                    <a href="https://wa.me/5500000000000?text=Olá! Gostaria de agendar um serviço de Tratamento Capilar" class="btn">Agendar Agora</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profissionais -->
+    <section id="team" class="section team">
+        <div class="section-title">
+            <h2>Nossas Profissionais</h2>
+        </div>
+        <div class="team-container">
+            <div class="team-member">
+                <div class="member-img">
+                    <img src="/api/placeholder/300/300" alt="Ana Silva">
+                </div>
+                <div class="member-info">
+                    <h3>Ana Silva</h3>
+                    <p>Esteticista Facial</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="member-img">
+                    <img src="/api/placeholder/300/300" alt="Carla Oliveira">
+                </div>
+                <div class="member-info">
+                    <h3>Carla Oliveira</h3>
+                    <p>Esteticista Corporal</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="member-img">
+                    <img src="/api/placeholder/300/300" alt="Bruna Santos">
+                </div>
+                <div class="member-info">
+                    <h3>Bruna Santos</h3>
+                    <p>Manicure e Pedicure</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="member-img">
+                    <img src="/api/placeholder/300/300" alt="Daniela Martins">
+                </div>
+                <div class="member-info">
+                    <h3>Daniela Martins</h3>
+                    <p>Especialista em Cílios</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vantagens -->
+    <section id="benefits" class="section">
+        <div class="section-title">
+            <h2>Nossas Vantagens</h2>
+        </div>
+        <div class="benefits-container">
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i class="fas fa-check"></i>
+                </div>
+                <h3>Profissionais Qualificadas</h3>
+                <p>Nossa equipe é composta por profissionais especializadas e constantemente atualizadas com as tendências do mercado.</p>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3>Produtos Premium</h3>
+                <p>Utilizamos apenas produtos de alta qualidade que garantem resultados eficazes e duradouros.</p>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>Ambiente Acolhedor</h3>
+                <p>Nosso estúdio foi projetado para proporcionar conforto e bem-estar durante todos os tratamentos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Studio Star</h3>
+                <p>Seu espaço completo de beleza e bem-estar. Tratamentos personalizados com profissionais qualificadas.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Contato</h3>
+                <p><i class="fas fa-phone"></i> (00) 00000-0000</p>
+                <p><i class="fas fa-envelope"></i> contato@studiostar.com.br</p>
+                <p><i class="fas fa-map-marker-alt"></i> Rua da Beleza, 123 - Centro</p>
+            </div>
+            <div class="footer-col">
+                <h3>Horário de Funcionamento</h3>
+                <p>Segunda a Sexta: 9h às 19h</p>
+                <p>Sábado: 9h às 17h</p>
+                <p>Domingo: Fechado</p>
+            </div>
+            <div class="footer-col">
+                <h3>Siga-nos</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Studio Star - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <!-- Whatsapp Button -->
+    <a href="https://wa.me/5500000000000?text=Olá! Gostaria de saber mais sobre o Studio Star" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Menu Mobile
+        const menuToggle = document.getElementById('menuToggle');
+        const closeMenu = document.getElementById('closeMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('overlay');
+        const mobileLinks = document.querySelectorAll('.mobile-menu a');
+
+        // Abrir Menu
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+            overlay.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Fechar Menu
+        function closeMenuMobile() {
+            mobileMenu.classList.remove('open');
+            overlay.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        closeMenu.addEventListener('click', closeMenuMobile);
+        overlay.addEventListener('click', closeMenuMobile);
+
+        // Fechar menu ao clicar em um link
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', closeMenuMobile);
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // Ajuste para o cabeçalho fixo
+                    const headerOffset = 70;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Header com fundo ao rolar
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(32, 32, 32, 0.95)';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.2)';
+            } else {
+                header.style.backgroundColor = 'rgba(32, 32, 32, 1)';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>

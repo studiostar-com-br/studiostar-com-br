@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Star - Beleza e Estética</title>
+    <style>
+        :root {
+            --primary-black: #202020;
+            --primary-pink: #ff6b99;
+            --primary-gray: #e0e0e0;
+            --light-pink: #ffd6e4;
+            --dark-gray: #555555;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--primary-black);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--primary-black);
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .logo span {
+            color: var(--primary-pink);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 30px;
+        }
+        
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--primary-pink);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to right, rgba(32, 32, 32, 0.9), rgba(32, 32, 32, 0.7)), url('/api/placeholder/1200/800') center/cover no-repeat;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .hero h2 span {
+            color: var(--primary-pink);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--primary-gray);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-pink);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #ff4d85;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 107, 153, 0.3);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h3 {
+            font-size: 2.5rem;
+            color: var(--primary-black);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--dark-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .section-title h3:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-pink);
+            margin: 15px auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-img {
+            height: 220px;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .service-content h4 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-black);
+        }
+        
+        .service-content p {
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-pink);
+            color: var(--primary-pink);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-pink);
+            color: white;
+        }
+        
+        /* Team Section */
+        .team {
+            padding: 100px 0;
+            background-color: var(--primary-gray);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .team-member {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        
+        .member-img {
+            height: 280px;
+            overflow: hidden;
+        }
+        
+        .member-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .member-info {
+            padding: 25px;
+        }
+        
+        .member-info h4 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: var(--primary-black);
+        }
+        
+        .member-info p {
+            color: var(--primary-pink);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: var(--light-pink);
+            color: var(--primary-pink);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-pink);
+            color: white;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-radius: 15px;
+            transition: all 0.3s;
+        }
+        
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            height: 80px;
+            width: 80px;
+            background-color: var(--light-pink);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: var(--primary-pink);
+            font-size: 2rem;
+        }
+        
+        .feature h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary-black);
+        }
+        
+        .feature p {
+            color: var(--dark-gray);
+            font-size: 0.95rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-black);
+            color: white;
+            padding: 80px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-col h5 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: white;
+        }
+        
+        .footer-col h5:after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-pink);
+            margin-top: 10px;
+        }
+        
+        .footer-col p, .footer-col a {
+            color: #b0b0b0;
+            margin-bottom: 10px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            text-decoration: none;
+            display: block;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-pink);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            margin-right: 15px;
+            color: var(--primary-pink);
+        }
+        
+        .contact-text {
+            color: #b0b0b0;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        /* Media Queries */
+        @media (max-width: 992px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: var(--primary-black);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding: 30px 0;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 25px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h3 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>Studio <span>Star</span></h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Serviços</a></li>
+                <li><a href="#team">Equipe</a></li>
+                <li><a href="#features">Vantagens</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+            <div class="hamburger">
+                <span>☰</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Bem-vindo ao Studio <span>Star</span></h2>
+                <p>Onde a beleza se encontra com a excelência. Oferecemos serviços completos de estética facial, corporal e cuidados pessoais para realçar sua beleza natural.</p>
+                <a href="#services" class="btn">Conheça Nossos Serviços</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h3>Nossos Serviços</h3>
+                <p>Oferecemos uma gama completa de serviços de beleza e estética realizados por profissionais qualificados.</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Estética Facial -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/api/placeholder/600/400" alt="Estética Facial">
+                    </div>
+                    <div class="service-content">
+                        <h4>Estética Facial</h4>
+                        <p>Tratamentos faciais personalizados para revitalizar, hidratar e rejuvenescer sua pele, devolvendo brilho e firmeza natural.</p>
+                        <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20Estética%20Facial" class="btn btn-outline">Agendar Agora</a>
+                    </div>
+                </div>
+                
+                <!-- Estética Corporal -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/api/placeholder/600/400" alt="Estética Corporal">
+                    </div>
+                    <div class="service-content">
+                        <h4>Estética Corporal</h4>
+                        <p>Procedimentos para modelar o corpo, reduzir medidas, tratar celulite e flacidez, promovendo bem-estar e autoestima.</p>
+                        <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20Estética%20Corporal" class="btn btn-outline">Agendar Agora</a>
+                    </div>
+                </div>
+                
+                <!-- Manicure e Pedicure -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/api/placeholder/600/400" alt="Manicure e Pedicure">
+                    </div>
+                    <div class="service-content">
+                        <h4>Manicure e Pedicure</h4>
+                        <p>Cuidados completos para suas mãos e pés, incluindo esmaltação, unhas em gel, alongamentos e decorações exclusivas.</p>
+                        <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20Manicure%20e%20Pedicure" class="btn btn-outline">Agendar Agora</a>
+                    </div>
+                </div>
+                
+                <!-- Cílios -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/api/placeholder/600/400" alt="Extensão de Cílios">
+                    </div>
+                    <div class="service-content">
+                        <h4>Extensão de Cílios</h4>
+                        <p>Alongamento, volume russo, fio a fio e outras técnicas para realçar seu olhar com cílios mais longos e volumosos.</p>
+                        <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20Extensão%20de%20Cílios" class="btn btn-outline">Agendar Agora</a>
+                    </div>
+                </div>
+                
+                <!-- Sobrancelhas -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="/api/placeholder/600/400" alt="Design de Sobrancelhas">
+                    </div>
+                    <div class="service-content">
+                        <h4>Design de Sobrancelhas</h4>
+                        <p>Design personalizado, micropigmentação e henna para estruturar e destacar seu olhar com sobrancelhas perfeitas.</p>
+                        <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20Design%20de%20Sobrancelhas" class="btn btn-outline">Agendar Agora</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="container">
+            <div class="section-title">
+                <h3>Nossa Equipe</h3>
+                <p>Conheça nossos profissionais altamente qualificados e dedicados a proporcionar o melhor atendimento.</p>
+            </div>
+            
+            <div class="team-grid">
+                <!-- Especialista em Estética Facial -->
+                <div class="team-member">
+                    <div class="member-img">
+                        <img src="/api/placeholder/400/500" alt="Especialista em Estética Facial">
+                    </div>
+                    <div class="member-info">
+                        <h4>Amanda Silva</h4>
+                        <p>Estética Facial</p>
+                        <div class="social-links">
+                            <a href="#"><span>in</span></a>
+                            <a href="#"><span>f</span></a>
+                            <a href="#"><span>ig</span></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Especialista em Estética Corporal -->
+                <div class="team-member">
+                    <div class="member-img">
+                        <img src="/api/placeholder/400/500" alt="Especialista em Estética Corporal">
+                    </div>
+                    <div class="member-info">
+                        <h4>Carla Oliveira</h4>
+                        <p>Estética Corporal</p>
+                        <div class="social-links">
+                            <a href="#"><span>in</span></a>
+                            <a href="#"><span>f</span></a>
+                            <a href="#"><span>ig</span></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Manicure e Pedicure -->
+                <div class="team-member">
+                    <div class="member-img">
+                        <img src="/api/placeholder/400/500" alt="Manicure e Pedicure">
+                    </div>
+                    <div class="member-info">
+                        <h4>Beatriz Costa</h4>
+                        <p>Manicure e Pedicure</p>
+                        <div class="social-links">
+                            <a href="#"><span>in</span></a>
+                            <a href="#"><span>f</span></a>
+                            <a href="#"><span>ig</span></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Designer de Cílios -->
+                <div class="team-member">
+                    <div class="member-img">
+                        <img src="/api/placeholder/400/500" alt="Designer de Cílios">
+                    </div>
+                    <div class="member-info">
+                        <h4>Daniela Santos</h4>
+                        <p>Extensão de Cílios</p>
+                        <div class="social-links">
+                            <a href="#"><span>in</span></a>
+                            <a href="#"><span>f</span></a>
+                            <a href="#"><span>ig</span></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Designer de Sobrancelhas -->
+                <div class="team-member">
+                    <div class="member-img">
+                        <img src="/api/placeholder/400/500" alt="Designer de Sobrancelhas">
+                    </div>
+                    <div class="member-info">
+                        <h4>Elaine Martins</h4>
+                        <p>Design de Sobrancelhas</p>
+                        <div class="social-links">
+                            <a href="#"><span>in</span></a>
+                            <a href="#"><span>f</span></a>
+                            <a href="#"><span>ig</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-title">
+                <h3>Nossas Vantagens</h3>
+                <p>No Studio Star, oferecemos uma experiência excepcional para nossos clientes.</p>
+            </div>
+            
+            <div class="features-grid">
+                <!-- Profissionais Qualificados -->
+                <div class="feature">
+                    <div class="feature-icon">★</div>
+                    <h4>Profissionais Qualificados</h4>
+                    <p>Nossa equipe é formada por especialistas com ampla experiência e certificações em suas áreas de atuação.</p>
+                </div>
+                
+                <!-- Produtos Premium -->
+                <div class="feature">
+                    <div class="feature-icon">★</div>
+                    <h4>Produtos Premium</h4>
+                    <p>Utilizamos apenas produtos de alta qualidade e marcas reconhecidas para garantir os melhores resultados.</p>
+                </div>
+                
+                <!-- Ambiente Acolhedor -->
+                <div class="feature">
+                    <div class="feature-icon">★</div>
+                    <h4>Ambiente Acolhedor</h4>
+                    <p>Nosso espaço foi projetado pensando no seu conforto e bem-estar durante todos os procedimentos.</p>
+                </div>
+                
+                <!-- Higiene e Esterilização -->
+                <div class="feature">
+                    <div class="feature-icon">★</div>
+                    <h4>Higiene Rigorosa</h4>
+                    <p>Seguimos rigorosos protocolos de higiene e esterilização para sua segurança e tranquilidade.</p>
+                </div>
+                
+                <!-- Atendimento Personalizado -->
+                <div class="feature">
+                    <div class="feature-icon">★</div>
+                    <h4>Atendimento Personalizado</h4>
+                    <p>Adaptamos nossos serviços às suas necessidades específicas para resultados realmente satisfatórios.</p>
+                </div>
+                
+                <!-- Horários Flexíveis -->
+                <div class="feature">
+                    <div class="feature-icon">★</div>
+                    <h4>Horários Flexíveis</h4>
+                    <p>Oferecemos horários estendidos e agendamento fácil para se adequar à sua rotina.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- About -->
+                <div class="footer-col">
+                    <h5>Sobre Nós</h5>
+                    <p>O Studio Star é um espaço dedicado à beleza e ao bem-estar, oferecendo serviços completos de estética facial, corporal e cuidados pessoais com excelência e profissionalismo.</p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="footer-col">
+                    <h5>Links Rápidos</h5>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Serviços</a></li>
+                        <li><a href="#team">Nossa Equipe</a></li>
+                        <li><a href="#features">Vantagens</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div class="footer-col">
+                    <h5>Serviços</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Estética Facial</a></li>
+                        <li><a href="#">Estética Corporal</a></li>
+                        <li><a href="#">Manicure e Pedicure</a></li>
+                        <li><a href="#">Extensão de Cílios</a></li>
+                        <li><a href="#">Design de Sobrancelhas</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div class="footer-col">
+                    <h5>Contato</h5>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-text">Av. da Beleza, 123 - Centro<br>Sua Cidade - Estado</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-text">(00) 00000-0000</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-text">contato@studiostar.com.br</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Studio Star - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
+        
+        hamburger.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll(".nav-menu a").forEach(link => {
+            link.addEventListener("click", () => {
+                navMenu.classList.remove("active");
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
