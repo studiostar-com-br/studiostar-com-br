@@ -1,6 +1,6 @@
 :root {
     --primary-color: #e83e8c;
-    --secondary-color: #6c63ff;
+    --secondary-color: #000000;
     --text-color: #333;
     --light-color: #fff;
     --dark-bg: #202020;
@@ -374,7 +374,7 @@ section:not(#home):before {
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 20px 60px; /* Aumentei o padding-bottom para 60px */
 }
 
 .service-card {
@@ -524,9 +524,9 @@ section:not(#home):before {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 20px 60px; /* Aumentei o padding-bottom para 60px */
 }
 
 .benefit-item {
