@@ -5,7 +5,6 @@
     --light-color: #fff;
     --dark-bg: #202020;
     --gray-bg: #eeeeee;
-    --black-bg: #202020;
     --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
 }
@@ -64,6 +63,7 @@ section:not(#home):before {
     z-index: 1;
 }
 
+/* Header e navegação */
 #header {
     position: fixed;
     top: 0;
@@ -88,7 +88,6 @@ section:not(#home):before {
 .logo {
     font-size: 24px;
     font-weight: 700;
-    color: var(--text-color);
 }
 
 .logo span {
@@ -126,9 +125,9 @@ section:not(#home):before {
     border: none;
     font-size: 24px;
     cursor: pointer;
-    color: var(--text-color);
 }
 
+/* Menu móvel */
 .mobile-menu {
     position: fixed;
     top: 0;
@@ -157,7 +156,6 @@ section:not(#home):before {
     border: none;
     font-size: 24px;
     cursor: pointer;
-    color: var(--text-color);
 }
 
 .mobile-link {
@@ -181,13 +179,13 @@ section:not(#home):before {
     display: block;
 }
 
+/* Hero section */
 .hero {
     height: 100vh;
     min-height: 600px;
     display: flex;
     align-items: center;
     padding: 0;
-    position: relative;
     background-color: #f8f9fa;
 }
 
@@ -211,7 +209,6 @@ section:not(#home):before {
     font-size: 48px;
     margin-bottom: 25px;
     font-weight: 700;
-    color: var(--text-color);
     position: relative;
 }
 
@@ -244,7 +241,6 @@ section:not(#home):before {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-    position: relative;
 }
 
 .hero-image img {
@@ -253,7 +249,7 @@ section:not(#home):before {
     object-fit: cover;
 }
 
-/* Redesign dos botões - Minimalista com efeito de reflexo */
+/* Botões */
 .btn {
     display: inline-block;
     padding: 12px 28px;
@@ -261,7 +257,7 @@ section:not(#home):before {
     font-weight: 500;
     text-align: center;
     cursor: pointer;
-    transition: color 0.3s ease, background 0.3s ease;
+    transition: all 0.3s ease;
     letter-spacing: 0.5px;
     border: none;
     position: relative;
@@ -296,17 +292,7 @@ section:not(#home):before {
     box-shadow: 0 4px 12px rgba(232, 62, 140, 0.35);
 }
 
-.btn-secondary {
-    background-color: transparent;
-    color: var(--text-color);
-    border: 1px solid var(--text-color);
-}
-
-.btn-secondary:hover {
-    background-color: var(--text-color);
-    color: var(--light-color);
-}
-
+/* Estilo específico para botões de serviço */
 .btn-service {
     background-color: var(--primary-color);
     color: var(--light-color);
@@ -314,19 +300,36 @@ section:not(#home):before {
     border-radius: 4px;
     font-size: 14px;
     font-weight: 500;
-    display: inline-block;
     box-shadow: 0 2px 8px rgba(232, 62, 140, 0.25);
     position: absolute;
     bottom: 20px;
     left: 20px;
     width: calc(100% - 40px);
     text-align: center;
+    overflow: hidden; /* Importante para o efeito de brilho */
+}
+
+.btn-service:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.7s ease;
+    z-index: 1;
 }
 
 .btn-service:hover {
     background-color: #d6246f;
 }
 
+.btn-service:hover:before {
+    left: 100%;
+}
+
+/* Títulos das seções */
 .section-title {
     text-align: center;
     margin-bottom: 50px;
@@ -359,6 +362,7 @@ section:not(#home):before {
     background-color: var(--primary-color);
 }
 
+/* Serviços */
 #services {
     background-color: var(--gray-bg);
     z-index: 10;
@@ -373,7 +377,6 @@ section:not(#home):before {
     padding: 0 20px;
 }
 
-/* Correção do layout dos cards */
 .service-card {
     background-color: var(--light-color);
     border-radius: 8px;
@@ -382,12 +385,11 @@ section:not(#home):before {
     transition: var(--transition);
     display: flex;
     flex-direction: column;
-    height: 450px; /* Altura fixa para todos os cards */
+    height: 450px;
     position: relative;
 }
 
 .service-card:hover {
-    transform: translateY(-10px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
@@ -427,7 +429,7 @@ section:not(#home):before {
     display: flex;
     flex-direction: column;
     position: relative;
-    padding-bottom: 70px; /* Espaço para o botão */
+    padding-bottom: 70px;
 }
 
 .service-content h3 {
@@ -441,6 +443,7 @@ section:not(#home):before {
     font-size: 14px;
 }
 
+/* Equipe */
 #team {
     background-color: var(--light-color);
 }
@@ -511,14 +514,15 @@ section:not(#home):before {
     transform: translateY(-3px);
 }
 
+/* Vantagens - Seção melhorada */
 #benefits {
-    background-color: var(--black-bg);
+    background-color: var(--dark-bg);
     color: var(--light-color);
 }
 
 .benefits-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
@@ -526,11 +530,13 @@ section:not(#home):before {
 }
 
 .benefit-item {
-    text-align: center;
-    padding: 30px 20px;
+    padding: 35px 28px;
     background-color: rgba(255, 255, 255, 0.05);
     border-radius: 8px;
     transition: var(--transition);
+    text-align: left;
+    position: relative;
+    overflow: hidden;
 }
 
 .benefit-item:hover {
@@ -539,17 +545,40 @@ section:not(#home):before {
 }
 
 .benefit-icon {
-    font-size: 40px;
+    font-size: 32px;
     margin-bottom: 20px;
     color: var(--primary-color);
+    text-align: center;
 }
 
 .benefit-item h3 {
     margin-bottom: 15px;
     font-size: 20px;
+    text-align: center;
+    position: relative;
 }
 
-/* Seção de Localização */
+.benefit-item h3:after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+.benefit-item p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0 auto;
+    max-width: 290px;
+    text-align: center;
+}
+
+/* Localização */
 #location {
     background-color: var(--gray-bg);
 }
@@ -587,7 +616,6 @@ section:not(#home):before {
 .location-info h3 {
     font-size: 24px;
     margin-bottom: 15px;
-    color: var(--text-color);
     position: relative;
     padding-bottom: 10px;
 }
@@ -627,6 +655,7 @@ section:not(#home):before {
     width: 20px;
 }
 
+/* Footer */
 #contact {
     background-color: var(--dark-bg);
     color: var(--light-color);
@@ -748,39 +777,26 @@ section:not(#home):before {
     opacity: 0.7;
 }
 
-/* Botões flutuantes redesenhados */
-.whatsapp-btn {
+/* Botões flutuantes */
+.whatsapp-btn, .back-to-top {
     position: fixed;
-    bottom: 30px;
     right: 20px;
     width: 40px;
     height: 40px;
-    background-color: #25d366;
-    color: var(--light-color);
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    font-size: 20px;
     z-index: 90;
-    transition: background-color 0.3s ease;
     overflow: hidden;
 }
 
-.whatsapp-btn:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.7s ease;
-}
-
-.whatsapp-btn:hover:before {
-    left: 100%;
+.whatsapp-btn {
+    bottom: 30px;
+    background-color: #25d366;
+    color: var(--light-color);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
 }
 
 .whatsapp-btn:hover {
@@ -788,26 +804,15 @@ section:not(#home):before {
 }
 
 .back-to-top {
-    position: fixed;
     bottom: 80px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
     background-color: var(--primary-color);
     color: var(--light-color);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
     box-shadow: 0 4px 12px rgba(232, 62, 140, 0.3);
     border: none;
     cursor: pointer;
     opacity: 0;
     visibility: hidden;
-    z-index: 90;
-    transition: background-color 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
-    overflow: hidden;
+    transition: all 0.3s ease;
 }
 
 .back-to-top.active {
@@ -815,7 +820,11 @@ section:not(#home):before {
     visibility: visible;
 }
 
-.back-to-top:before {
+.back-to-top:hover {
+    background-color: #d6246f;
+}
+
+.whatsapp-btn:before, .back-to-top:before {
     content: '';
     position: absolute;
     top: 0;
@@ -826,14 +835,11 @@ section:not(#home):before {
     transition: left 0.7s ease;
 }
 
-.back-to-top:hover:before {
+.whatsapp-btn:hover:before, .back-to-top:hover:before {
     left: 100%;
 }
 
-.back-to-top:hover {
-    background-color: #d6246f;
-}
-
+/* Media Queries */
 @media (max-width: 992px) {
     .nav-menu {
         gap: 15px;
@@ -900,10 +906,6 @@ section:not(#home):before {
         height: 60px;
     }
     
-    .btn {
-        padding: 12px 24px;
-    }
-    
     .location-container {
         grid-template-columns: 1fr;
     }
@@ -915,6 +917,10 @@ section:not(#home):before {
     .service-card {
         height: auto;
         min-height: 450px;
+    }
+    
+    .benefit-item {
+        padding: 30px 25px;
     }
 }
 
@@ -948,19 +954,5 @@ section:not(#home):before {
     .member-img {
         width: 150px;
         height: 150px;
-    }
-    
-    .whatsapp-btn, .back-to-top {
-        width: 40px;
-        height: 40px;
-        font-size: 18px;
-    }
-    
-    .back-to-top {
-        bottom: 80px;
-    }
-    
-    .map-container {
-        height: 300px;
     }
 }
