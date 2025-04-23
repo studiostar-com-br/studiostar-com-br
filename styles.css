@@ -531,7 +531,7 @@ section:not(#home):before {
 }
 
 .map-container {
-    height: 450px;
+    height: 350px;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: var(--shadow);
