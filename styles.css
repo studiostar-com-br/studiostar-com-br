@@ -957,7 +957,7 @@ section:not(#home):before {
     }
     
     .back-to-top {
-        bottom: 70px;
+        bottom: 80px;
     }
     
     .map-container {
