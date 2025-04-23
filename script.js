@@ -3,23 +3,21 @@ const menuToggle = document.getElementById('menuToggle');
 const closeMenu = document.getElementById('closeMenu');
 const mobileMenu = document.getElementById('mobileMenu');
 const overlay = document.getElementById('overlay');
-const mobileLinks = document.querySelectorAll('.mobile-menu a');
+const mobileLinks = document.querySelectorAll('.mobile-link');
 const header = document.getElementById('header');
 const backToTopBtn = document.getElementById('backToTop');
-const newsletterForm = document.getElementById('newsletterForm');
-const newsletterMessage = document.getElementById('newsletterMessage');
 const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('section');
 
 // Mobile Menu Functions
 function openMenu() {
-    mobileMenu.classList.add('open');
+    mobileMenu.classList.add('active');
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
 }
 
 function closeMenuMobile() {
-    mobileMenu.classList.remove('open');
+    mobileMenu.classList.remove('active');
     overlay.classList.remove('active');
     document.body.style.overflow = 'auto';
 }
@@ -79,36 +77,6 @@ backToTopBtn.addEventListener('click', () => {
     });
 });
 
-// Newsletter Form
-if (newsletterForm) {
-    newsletterForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const email = document.getElementById('emailNewsletter').value;
-        
-        if (validateEmail(email)) {
-            // Simulação de envio bem-sucedido
-            newsletterMessage.textContent = 'Inscrição realizada com sucesso!';
-            newsletterMessage.className = 'form-message success';
-            newsletterForm.reset();
-            
-            // Limpar mensagem após 3 segundos
-            setTimeout(() => {
-                newsletterMessage.textContent = '';
-                newsletterMessage.className = 'form-message';
-            }, 3000);
-        } else {
-            newsletterMessage.textContent = 'Por favor, insira um e-mail válido.';
-            newsletterMessage.className = 'form-message error';
-        }
-    });
-}
-
-// Validate Email
-function validateEmail(email) {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
-}
-
 // Intersection Observer for animations
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -120,7 +88,7 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 // Observe elements for animation
-document.querySelectorAll('.service-card, .team-member, .benefit-item, .testimonial-card').forEach(item => {
+document.querySelectorAll('.service-card, .team-member, .benefit-item').forEach(item => {
     observer.observe(item);
 });
 
@@ -144,6 +112,48 @@ function highlightNavOnScroll() {
     });
 }
 
+// Service Cards Hover Effect
+const serviceCards = document.querySelectorAll('.service-card');
+serviceCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        const btn = card.querySelector('.btn-service');
+        if (btn) {
+            btn.classList.add('animate-pulse');
+        }
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        const btn = card.querySelector('.btn-service');
+        if (btn) {
+            btn.classList.remove('animate-pulse');
+        }
+    });
+});
+
+// Add CSS for animation that isn't in the original CSS
+const style = document.createElement('style');
+style.textContent = `
+    .animate-fade-in {
+        animation: fadeIn 0.8s ease forwards;
+    }
+    
+    .animate-pulse {
+        animation: pulse 1.5s infinite;
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+`;
+document.head.appendChild(style);
+
 // Event Listeners
 window.addEventListener('scroll', () => {
     toggleHeaderBackground();
@@ -161,20 +171,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         document.querySelector('.hero-content').classList.add('animate-fade-in');
     }, 300);
-});
-
-// Service Cards Hover Effect
-const serviceCards = document.querySelectorAll('.service-card');
-serviceCards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        const btn = card.querySelector('.btn');
-        btn.classList.add('animate-pulse');
-    });
-    
-    card.addEventListener('mouseleave', () => {
-        const btn = card.querySelector('.btn');
-        btn.classList.remove('animate-pulse');
-    });
 });
 
 // Preload images for better performance
